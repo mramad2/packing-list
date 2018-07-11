@@ -2,6 +2,8 @@
 
 A packing list iOS and Android application written in React Native.
 
+(Mock-up)[http://infinitered.invisionapp.com/share/XDLOCSGVRA4#/304928298_list]
+
 # React Native Setup
 
 To setup React Native on your machine, follow our [React Native Setup](https://github.com/infinitered/packing-list/blob/master/docs/react-native-setup.md) guide.
