@@ -2,7 +2,16 @@
 
 A packing list iOS and Android application written in React Native.
 
-[Mock-up](http://infinitered.invisionapp.com/share/XDLOCSGVRA4#/304928298_list)
+[Mock-up] InVision link.(http://infinitered.invisionapp.com/share/XDLOCSGVRA4#/304928298_list)
+
+# Slides
+
+[Basic React Native Concepts](https://infinite-red.slides.com/infinitered/basic-react-native-concepts#/)
+
+[What is React Native](https://infinite-red.slides.com/infinitered/deck-7#/)
+
+[Welcome](https://infinite-red.slides.com/infinitered/deck-6#/)
+
 
 # React Native Setup
 
