@@ -2,7 +2,7 @@
 
 A packing list iOS and Android application written in React Native.
 
-[Mock-up] InVision link.(http://infinitered.invisionapp.com/share/XDLOCSGVRA4#/304928298_list)
+[InVision mock-up](http://infinitered.invisionapp.com/share/XDLOCSGVRA4#/304928298_list)
 
 # Slides
 
