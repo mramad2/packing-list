@@ -28,6 +28,7 @@ export class InputScreen extends React.Component {
         onChangeText={value => store.handleInput(value)}
         onAddItem={() => this.handleAddPress(store)}
         onClearItems={() => this.handleClearPress(store)}
+        navigation={this.props.navigation}
       />
     )
   }

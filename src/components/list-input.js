@@ -4,27 +4,35 @@ import { Button } from "./button"
 import { colors } from "../theme/colors"
 
 export class ListInput extends React.Component {
+  constructor(props) {
+    super(props)
+    this.listener = props.navigation.addListener("didFocus", () => this.input.focus())
+  }
+
+  componentWillUnmount() {
+    this.listener.remove()
+  }
+
+  handleAddItem = () => this.props.onAddItem()
+
   render() {
-    const { value, onChangeText, onAddItem } = this.props
+    const { value, onChangeText } = this.props
     return (
       <View style={styles.container}>
         <View style={styles.inputContainer}>
           <TextInput
             ref={ref => (this.input = ref)}
-            autoFocus
             style={styles.input}
             value={value}
             onChangeText={val => onChangeText(val)}
-            onSubmitEditing={() => {
-              this.input.clear()
-              onAddItem()
-            }}
+            onSubmitEditing={this.handleAddItem}
             returnKeyType="done"
             placeholder="Enter Item"
             placeholderTextColor={colors.rainCloud}
+            blurOnSubmit={false}
           />
         </View>
-        <Button text="Add item to List" onPress={() => onAddItem()} active={value} />
+        <Button text="Add item to List" onPress={this.handleAddItem} active={value} />
       </View>
     )
   }
