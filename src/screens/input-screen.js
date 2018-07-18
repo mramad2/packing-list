@@ -1,12 +1,12 @@
 import React from "react"
-import { StyleSheet, Text, View, ScrollView } from "react-native"
+import { StyleSheet, View, ScrollView } from "react-native"
 import { ListInput } from "../components/list-input"
 import { Subscribe } from "unstated"
 import { RootStore } from "../app/root-component"
 import { RecentlyAdded } from "../components/recently-added"
 import { CustomNav } from "../components/custom-nav"
 import { colors } from "../theme/colors"
-import Icon from "react-native-vector-icons/Ionicons"
+// import Icon from "react-native-vector-icons/Ionicons"
 
 export class InputScreen extends React.Component {
   static navigationOptions = () => ({
@@ -38,7 +38,7 @@ export class InputScreen extends React.Component {
       <Subscribe to={[RootStore]}>
         {store => (
           <ScrollView
-            keyboardShouldPersistTaps="always"
+            keyboardShouldPersistTaps="handled"
             style={styles.container}
             contentContainerStyle={styles.container}
           >
