@@ -20,6 +20,8 @@ export default class App extends Component {
     ]
   }
 
+  // Turn this into an arrow function and hot reloading no longer works
+  // Also, this unbound function has access to this.state - how?
   listItems(item, index) {
     const checkItem = selectedItem => {
       const selectedName = selectedItem.name
