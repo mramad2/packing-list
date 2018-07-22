@@ -1,5 +1,13 @@
 import React, { Component } from "react"
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-native"
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+  Switch,
+  TouchableHighlight
+} from "react-native"
 
 /*
   STEP THREE
@@ -12,7 +20,8 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-nativ
 export default class App extends Component {
   state = {
     inputValue: null,
-    items: []
+    items: [],
+    switchOn: false
   }
 
   handleInput = value => {
@@ -62,10 +71,33 @@ export default class App extends Component {
   }
 
   render() {
-    const { items } = this.state
+    const { items, switchOn } = this.state
     return (
       <View style={styles.container}>
         {this.renderInputRow()}
+        <Switch
+          ref={taco => (this.switchy = taco)}
+          value={switchOn}
+          onValueChange={() =>
+            this.setState(state => {
+              return {
+                switchOn: !state.switchOn
+              }
+            })
+          }
+        />
+        <TouchableHighlight
+          style={{ padding: 10, backgroundColor: "orange", marginTop: 20 }}
+          onPress={() => this.switchy.setNativeProps({ value: true })}
+        >
+          <Text>Turn it On</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={{ padding: 10, backgroundColor: "pink" }}
+          onPress={() => this.switchy.setNativeProps({ value: false })}
+        >
+          <Text>Turn it Off</Text>
+        </TouchableHighlight>
         <View style={{ marginTop: 20 }}>
           {items.map((item, index) => {
             const backgroundColor = item.checked ? "dodgerblue" : "indigo"
