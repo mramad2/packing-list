@@ -86,18 +86,21 @@ export default class App extends Component {
             })
           }
         />
-        <TouchableHighlight
-          style={{ padding: 10, backgroundColor: "orange", marginTop: 20 }}
-          onPress={() => this.switchy.setNativeProps({ value: true })}
-        >
-          <Text>Turn it On</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={{ padding: 10, backgroundColor: "pink" }}
-          onPress={() => this.switchy.setNativeProps({ value: false })}
-        >
-          <Text>Turn it Off</Text>
-        </TouchableHighlight>
+        <View style={{ flexDirection: "row", alignItems: "baseline" }}>
+          <TouchableHighlight
+            style={{ padding: 10, backgroundColor: "orange", marginTop: 20 }}
+            onPress={() => this.switchy.setNativeProps({ value: true })}
+          >
+            <Text>Turn it On</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            underlayColor="red"
+            style={{ padding: 10, backgroundColor: "pink" }}
+            onPress={() => this.switchy.setNativeProps({ value: false })}
+          >
+            <Text>Turn it Off</Text>
+          </TouchableHighlight>
+        </View>
         <View style={{ marginTop: 20 }}>
           {items.map((item, index) => {
             const backgroundColor = item.checked ? "dodgerblue" : "indigo"
