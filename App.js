@@ -20,9 +20,10 @@ export default class App extends Component {
     this.setState({ exchangeRates })
   }
 
-  getCats() {
+  getRates() {
     fetch("https://exchangeratesapi.io/api/latest", {
       method: "get"
+      // Optional Headers ⬇️
       // headers: {
       // Accept: "application/json",
       // "Content-Type": "application/json"
@@ -41,7 +42,7 @@ export default class App extends Component {
         <View style={{ flex: 1 }}>
           <TouchableOpacity
             style={{ top: 50, backgroundColor: "lightgreen", padding: 10, alignItems: "center" }}
-            onPress={() => this.getCats()}
+            onPress={() => this.getRates()}
           >
             <Text>GET EXCHANGE RATES</Text>
           </TouchableOpacity>
