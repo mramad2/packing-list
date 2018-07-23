@@ -1,31 +1,63 @@
 import React, { Component } from "react"
-import { StyleSheet, Text, View, TextInput } from "react-native"
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from "react-native"
 
 /*
-  STEP ONE
-  • Introduce local state
-  • Able to write to and read from local state
+  FETCH
+  • Let's get some rates
+  • What about transforms?
 */
 
 export default class App extends Component {
   state = {
-    inputValue: null
+    exchangeRates: []
   }
 
-  handleInput(value) {
-    this.setState({ inputValue: value })
+  transformRates(rates) {
+    const pairs = Object.entries(rates)
+    const exchangeRates = pairs.map(rate => {
+      return { symbol: rate[0], value: rate[1] }
+    })
+    this.setState({ exchangeRates })
+  }
+
+  getCats() {
+    fetch("https://exchangeratesapi.io/api/latest", {
+      method: "get"
+      // headers: {
+      // Accept: "application/json",
+      // "Content-Type": "application/json"
+      // }
+    })
+      .then(resp => resp.json())
+      // .then(data => console.log("DATA", data))
+      .then(data => this.transformRates(data.rates))
+      .catch(err => console.log("NO TACOS", err))
   }
 
   render() {
-    const { inputValue } = this.state
+    const { exchangeRates } = this.state
     return (
       <View style={styles.container}>
-        <TextInput
-          style={styles.input}
-          value={inputValue}
-          onChangeText={val => this.handleInput(val)}
-        />
-        <Text style={styles.theValue}>{inputValue}</Text>
+        <View style={{ flex: 1 }}>
+          <TouchableOpacity
+            style={{ top: 50, backgroundColor: "lightgreen", padding: 10, alignItems: "center" }}
+            onPress={() => this.getCats()}
+          >
+            <Text>GET EXCHANGE RATES</Text>
+          </TouchableOpacity>
+        </View>
+        <ScrollView
+          style={{ flex: 1, backgroundColor: "lightgray" }}
+          contentContainerStyle={{ alignItems: "center" }}
+        >
+          {exchangeRates.map((rate, i) => {
+            return (
+              <Text key={i} style={{ padding: 5 }}>
+                {rate.symbol}: {rate.value}
+              </Text>
+            )
+          })}
+        </ScrollView>
       </View>
     )
   }
@@ -34,9 +66,7 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F5FCFF",
-    justifyContent: "center",
-    alignItems: "center"
+    backgroundColor: "#F5FCFF"
   },
   input: {
     width: "50%",
