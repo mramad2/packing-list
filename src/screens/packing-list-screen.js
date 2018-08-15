@@ -7,6 +7,7 @@ import { ListInput } from "../components/list-input"
   • getstorybook
   • yarn run storybook
   • react-native run-ios
+  • storybook/stories/index.js -> add
 */
 
 export class PackingListScreen extends React.Component {
