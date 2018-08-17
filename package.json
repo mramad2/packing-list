@@ -8,26 +8,33 @@
     "storybook": "storybook start -p 7007"
   },
   "dependencies": {
-    "react": "16.3.1",
-    "react-native": "0.55.4"
+    "react": "16.4.1",
+    "react-native": "0.56.0"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.10",
     "@storybook/addon-links": "^3.4.10",
     "@storybook/addons": "^3.4.10",
     "@storybook/react-native": "^3.4.10",
-    "babel-core": "^6.26.3",
-    "babel-jest": "23.0.1",
-    "babel-preset-react-native": "4.0.0",
+    "@babel/core": "^7.0.0-beta.47",
+    "babel-core": "^7.0.0-beta.47",
+    "babel-jest": "23.4.2",
+    "babel-preset-react-native": "^5",
     "babel-runtime": "^6.26.0",
     "eslint": "^4.19.1",
     "eslint-plugin-react": "^7.9.1",
-    "jest": "^23.5.0",
+    "jest": "23.5.0",
     "prop-types": "^15.6.2",
     "react-dom": "16.3.1",
     "react-test-renderer": "^16.4.2"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|react-navigation)/"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    }
   }
 }

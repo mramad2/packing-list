@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button bg is grey on clear prop 1`] = `
+<View
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "gray",
+      "borderRadius": 5,
+      "justifyContent": "center",
+      "marginLeft": 10,
+      "opacity": 1,
+      "shadowColor": "black",
+      "shadowOffset": Object {
+        "height": 5,
+        "width": 5,
+      },
+      "shadowOpacity": 0.9,
+      "shadowRadius": 5,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "white",
+        "margin": 5,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`Button shape has not changed 1`] = `
+<View
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "green",
+      "borderRadius": 5,
+      "justifyContent": "center",
+      "marginLeft": 10,
+      "opacity": 1,
+      "shadowColor": "black",
+      "shadowOffset": Object {
+        "height": 5,
+        "width": 5,
+      },
+      "shadowOpacity": 0.9,
+      "shadowRadius": 5,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "white",
+        "margin": 5,
+      }
+    }
+  />
+</View>
+`;
