@@ -2,12 +2,8 @@ import React from "react"
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, FlatList } from "react-native"
 import { ListInput } from "../components/list-input"
 /*
-  ADD STORYBOOK
-  • npm i -g @storybook/cli
-  • getstorybook
-  • yarn run storybook
-  • react-native run-ios
-  • storybook/stories/index.js -> add
+  ADD JEST TESTS
+  • yarn add --dev jest or npm install --save-dev jest
 */
 
 export class PackingListScreen extends React.Component {
