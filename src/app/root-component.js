@@ -14,7 +14,9 @@ const RootStack = createStackNavigator(
   }
 )
 
-export class RootStore extends Container {
+const AppContext = React.createContext()
+
+export class RootStore extends Component {
   state = {
     items: [],
     inputValue: null
@@ -57,15 +59,18 @@ export class RootStore extends Container {
     })
     this.setState({ items: newItems })
   }
+
+  render() {
+    return (
+      <AppContext.Provider store={this.state}>
+        <RootStack />
+      </AppContext.Provider>
+    )
+  }
 }
 
 export default class RootComponent extends Component {
   render() {
-    const rootStore = new RootStore()
-    return (
-      <Provider inject={[rootStore]}>
-        <RootStack />
-      </Provider>
-    )
+    return <RootStore />
   }
 }

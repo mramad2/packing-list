@@ -33,22 +33,8 @@ export class PackingListScreen extends React.Component {
   }
 
   render() {
-    return (
-      <Subscribe to={[RootStore]}>
-        {store => (
-          <View style={styles.container}>
-            <FlatList
-              data={store.state.items}
-              keyExtractor={item => item.name}
-              renderItem={({ item, index }) => this.listItems(item, index, store)}
-              contentContainerStyle={styles.listContainer}
-              style={styles.list}
-              numColumns={3}
-            />
-          </View>
-        )}
-      </Subscribe>
-    )
+    const AppContext = React.createContext()
+    return <AppContext.Consumer>{store => alert(store)}</AppContext.Consumer>
   }
 }
 

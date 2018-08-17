@@ -26,20 +26,16 @@ export class InputScreen extends React.Component {
 
   render() {
     return (
-      <Subscribe to={[RootStore]}>
-        {store => (
-          <View style={styles.container}>
-            {this.renderInputRow(store)}
-            <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-              {store.state.items.map((item, i) => (
-                <Text key={i + item.name} style={styles.theValue}>
-                  {item.name}
-                </Text>
-              ))}
-            </View>
-          </View>
-        )}
-      </Subscribe>
+      <View style={styles.container}>
+        {/* {this.renderInputRow(store)} */}
+        <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+          {/* {store.state.items.map((item, i) => (
+            <Text key={i + item.name} style={styles.theValue}>
+              {item.name}
+            </Text>
+          ))} */}
+        </View>
+      </View>
     )
   }
 }
