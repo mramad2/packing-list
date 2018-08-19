@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { PackingListScreen } from "../screens/packing-list-screen"
 import { InputScreen } from "../screens/input-screen"
 import { createStackNavigator } from "react-navigation"
-import { Provider, Container } from "unstated"
+import { PackingContext, PackingDefaults } from "../context/packing-context"
 
 const RootStack = createStackNavigator(
   {
@@ -19,17 +19,17 @@ const AppContext = React.createContext()
 export class RootStore extends Component {
   state = {
     items: [],
-    inputValue: null
+    inputValue: null,
+    clearItems: () => this.clearItems,
+    setItems: () => this.setItems,
+    handleInput: val => this.handleInput(val),
+    addItem: () => this.addItem,
+    checkItem: item => this.checkItem(item)
   }
 
   setItems = items => this.setState({ items })
 
-  handleInput = value => {
-    this.setState({
-      ...this.state,
-      inputValue: value
-    })
-  }
+  handleInput = inputValue => this.setState({ inputValue })
 
   addItem = () => {
     const { items, inputValue } = this.state
@@ -62,9 +62,9 @@ export class RootStore extends Component {
 
   render() {
     return (
-      <AppContext.Provider store={this.state}>
+      <PackingContext.Provider value={this.state}>
         <RootStack />
-      </AppContext.Provider>
+      </PackingContext.Provider>
     )
   }
 }

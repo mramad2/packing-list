@@ -2,6 +2,7 @@ import React from "react"
 import { StyleSheet, Text, View, TouchableOpacity, FlatList } from "react-native"
 import { Subscribe } from "unstated"
 import { RootStore } from "../app/root-component"
+import { PackingContext } from "../context/packing-context"
 /*
   STEP EIGHT
   • Manage state with Unstated (https://github.com/jamiebuilds/unstated)
@@ -19,11 +20,11 @@ export class PackingListScreen extends React.Component {
     }
   }
 
-  listItems(item, index, store) {
+  listItems(item, index, checkItem) {
     const backgroundColor = item.checked ? "dodgerblue" : "indigo"
     return (
       <TouchableOpacity
-        onPress={() => store.checkItem(item, store)}
+        onPress={() => checkItem(item)}
         style={[styles.itemWrapper, { backgroundColor }]}
         key={index}
       >
@@ -33,8 +34,22 @@ export class PackingListScreen extends React.Component {
   }
 
   render() {
-    const AppContext = React.createContext()
-    return <AppContext.Consumer>{store => alert(store)}</AppContext.Consumer>
+    return (
+      <PackingContext.Consumer>
+        {({ items, checkItem }) => (
+          <View style={styles.container}>
+            <FlatList
+              data={items}
+              keyExtractor={item => item.name}
+              renderItem={({ item, index }) => this.listItems(item, index, checkItem)}
+              contentContainerStyle={styles.listContainer}
+              style={styles.list}
+              numColumns={3}
+            />
+          </View>
+        )}
+      </PackingContext.Consumer>
+    )
   }
 }
 

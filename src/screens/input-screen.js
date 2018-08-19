@@ -1,41 +1,30 @@
 import React from "react"
 import { StyleSheet, Text, View } from "react-native"
 import { ListInput } from "../components/list-input"
-import { Subscribe } from "unstated"
-import { RootStore } from "../app/root-component"
+import { PackingContext } from "../context/packing-context"
 
 export class InputScreen extends React.Component {
-  handleAddPress(store) {
-    store.addItem()
-  }
-
-  handleClearPress(store) {
-    store.clearItems()
-  }
-
-  renderInputRow(store) {
-    return (
-      <ListInput
-        value={store.state.inputValue}
-        onChangeText={value => store.handleInput(value)}
-        onAddItem={() => this.handleAddPress(store)}
-        onClearItems={() => this.handleClearPress(store)}
-      />
-    )
-  }
-
   render() {
     return (
-      <View style={styles.container}>
-        {/* {this.renderInputRow(store)} */}
-        <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-          {/* {store.state.items.map((item, i) => (
-            <Text key={i + item.name} style={styles.theValue}>
-              {item.name}
-            </Text>
-          ))} */}
-        </View>
-      </View>
+      <PackingContext.Consumer>
+        {({ items, handleAddPress, clearItems, addItem, handleInput, inputValue }) => (
+          <View style={styles.container}>
+            <ListInput
+              value={inputValue}
+              onChangeText={value => handleInput(value)}
+              onAddItem={addItem()}
+              onClearItems={clearItems()}
+            />
+            <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+              {items.map((item, i) => (
+                <Text key={i + item.name} style={styles.theValue}>
+                  {item.name}
+                </Text>
+              ))}
+            </View>
+          </View>
+        )}
+      </PackingContext.Consumer>
     )
   }
 }
