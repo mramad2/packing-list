@@ -42,7 +42,7 @@ export class PackingListScreen extends React.Component {
     return (
       <Subscribe to={[RootStore]}>
         {store => (
-          <View style={styles.container}>
+          <View testID="packingListScreen" style={styles.container}>
             <FlatList
               data={store.state.items}
               keyExtractor={(item, index) => item.name + index}
